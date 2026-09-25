@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dilip Mondal - Creative Portfolio</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-grad: linear-gradient(135deg, #FF007A 0%, #7B1FA2 50%, #2196F3 100%);
+            --card-grad: linear-gradient(145deg, #ffffff, #f0f3f8);
+            --text-color: #2D3748;
+            --accent-color: #FF007A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            color: #f8fafc;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Background Animated Circles */
+        .bg-glow {
+            position: fixed;
+            top: -10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,0,122,0.3) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            filter: blur(50px);
+        }
+
+        .bg-glow-2 {
+            position: fixed;
+            bottom: -10%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(33,150,243,0.3) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            filter: blur(50px);
+        }
+
+        /* Hero Header */
+        header {
+            text-align: center;
+            padding: 80px 20px 40px;
+            position: relative;
+        }
+
+        .profile-title {
+            font-size: 3.2rem;
+            font-weight: 700;
+            background: var(--primary-grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .profile-subtitle {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 25px;
+            font-weight: 300;
+        }
+
+        .drive-folder-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: var(--primary-grad);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(255, 0, 122, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .drive-folder-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(33, 150, 243, 0.5);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: #ffffff;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 4px;
+            background: var(--primary-grad);
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 0, 122, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-img-wrapper {
+            width: 100%;
+            height: 230px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-img-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #FF007A;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            color: #f8fafc;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .card-desc {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .card-link:hover {
+            color: #FF007A;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 80px;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .profile-title {
+                font-size: 2.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
+    <header>
+        <h1 class="profile-title">Dilip Mondal</h1>
+        <p class="profile-subtitle">Creative Designer & Visual Artist | Portfolio Showcase</p>
+        <a href="https://drive.google.com/drive/folders/1wcrNd-aF0VgSdNxaNxRp6DR35z43yKWw" target="_blank" class="drive-folder-btn">
+            <i class="fa-brands fa-google-drive"></i> View All Assets on Drive
+        </a>
+    </header>
+
+    <div class="container">
+        <div class="section-header">
+            <h2>Featured Works</h2>
+        </div>
+
+        <div class="portfolio-grid">
+
+            <!-- Project Card 1 (Direct Google Drive Image Link Setup) -->
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <!-- 
+                        টিপস: গুগল ড্রাইভ থেকে যেকোনো একক ছবির লিংক পাবেন এইভাবে:
+                        https://drive.google.com/file/d/YOUR_IMAGE_FILE_ID/view
+                        সেখান থেকে FILE_ID টি নিচের লিংকে বসিয়ে দেবেন:
+                    -->
+                    <img src="https://lh3.googleusercontent.com/d/1wcrNd-aF0VgSdNxaNxRp6DR35z43yKWw" alt="Creative Project Showcase" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80'">
+                </div>
+                <div class="card-body">
+                    <span class="card-tag">Design Showcase</span>
+                    <h3 class="card-title">Featured Design Work</h3>
+                    <p class="card-desc">High-quality visual designs and creative concepts stored directly in my shared folder.</p>
+                    <a href="https://drive.google.com/drive/folders/1wcrNd-aF0VgSdNxaNxRp6DR35z43yKWw" target="_blank" class="card-link">
+                        Open in Google Drive <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=800&q=80" alt="UI/UX Concept">
+                </div>
+                <div class="card-body">
+                    <span class="card-tag">UI/UX & Branding</span>
+                    <h3 class="card-title">Brand Identity & Digital Assets</h3>
+                    <p class="card-desc">Creative layouts, color palettes, and interactive user experience models.</p>
+                    <a href="https://drive.google.com/drive/folders/1wcrNd-aF0VgSdNxaNxRp6DR35z43yKWw" target="_blank" class="card-link">
+                        Explore Media <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card 3 -->
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=800&q=80" alt="Graphics & Artwork">
+                </div>
+                <div class="card-body">
+                    <span class="card-tag">Graphics Art</span>
+                    <h3 class="card-title">Vector Illustrations & Artwork</h3>
+                    <p class="card-desc">Custom graphics, vector art, and high-resolution posters designed for clients.</p>
+                    <a href="https://drive.google.com/drive/folders/1wcrNd-aF0VgSdNxaNxRp6DR35z43yKWw" target="_blank" class="card-link">
+                        View Full Folder <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Dilip Mondal. Designed for Portfolio Showcase.</p>
+    </footer>
+
+</body>
+</html>
